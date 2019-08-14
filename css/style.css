@@ -1,0 +1,76 @@
+ * {
+     margin: 0;
+     padding: 0;
+     text-align: center;
+     font-weight: 500;
+     box-sizing: border-box;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+}
+ body {
+     overflow: hidden;
+     margin-left: 15px;
+     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+     font-size: 24px;
+     background: #FFFFFF;
+}
+ td {
+     min-width: 160px;
+     height: 80px;
+}
+ table {
+     width: 100vw;
+}
+ canvas {
+     width: 2252px;
+     height: 1446px;
+     z-index: 1;
+     position: absolute;
+     left: 0px;
+     top: 35px;
+}
+ .bold {
+     font-weight: 700;
+}
+ .row {
+     text-align: left;
+}
+ #current {
+     background: #2940f9;
+     color: white;
+     width: 185px;
+     text-align: center;
+     position: absolute;
+     top: 0;
+     left: 0;
+}
+ #goal {
+     background: #ff17aa;
+     color: white;
+     position: absolute;
+     width: 60px;
+     text-align: center;
+     top: 0;
+     left: 0;
+}
+ #input{
+     margin-top:10px;
+     width:350px;
+     height:height:15px;
+     font-size:25px;
+}
+.btn{
+    border: none;
+    background: #404040;
+    color: #ffffff !important;
+    font-weight: 100;
+    padding: 10px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    font-size: 15px;
+}
