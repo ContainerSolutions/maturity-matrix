@@ -8,6 +8,7 @@
      -moz-user-select: none;
      -ms-user-select: none;
      user-select: none;
+     font-size: 15px;
 }
  body {
      overflow: hidden;
@@ -18,17 +19,20 @@
 }
  td {
      min-width: 160px;
-     height: 80px;
+     height: 55px;
 }
  table {
      width: 100vw;
+     position: relative;
+     top: -7px;
+     left: 8px;
 }
  canvas {
      width: 2252px;
      height: 1446px;
      z-index: 1;
      position: absolute;
-     left: 0px;
+     left: 10px;
      top: 35px;
 }
  .bold {
@@ -45,6 +49,7 @@
      position: absolute;
      top: 0;
      left: 0;
+     font-size: 20px;
 }
  #goal {
      background: #ff17aa;
@@ -54,12 +59,19 @@
      text-align: center;
      top: 0;
      left: 0;
+     font-size: 20px;
 }
- #input{
+ input{
      margin-top:10px;
+     padding-bottom: 5px;
+     padding-top: 5px;
      width:350px;
-     height:height:15px;
-     font-size:25px;
+     /* height:height:15px; */
+     font-size:18px;
+     background-color: transparent;
+     border: none;
+     font-weight: 700;
+     color: #2940f9;
 }
 .btn{
     border: none;
@@ -72,5 +84,5 @@
     border-radius: 6px;
     display: inline-block;
     transition: all 0.3s ease 0s;
-    font-size: 15px;
+    font-size: 10px;
 }

@@ -295,10 +295,11 @@ window.addEventListener("resize", function() {
 
     function screenshotPage() {
         var wrapper = document.getElementById('wrapper');
+        let projectName = document.getElementById('input').value;
         html2canvas(wrapper, {
             onrendered: function(canvas) {
                 canvas.toBlob(function(blob) {
-                    saveAs(blob, 'myProject.png');
+                    saveAs(blob, (projectName ? projectName : 'myProject' )+ '.png')
                 });
             }
         });
@@ -315,7 +316,7 @@ window.addEventListener("resize", function() {
     function generate() {
         screenshotPage();
     }
-    console.log(exports, "exports")
+    console.log(exports, "exports");
     exports.screenshotPage = screenshotPage;
     exports.generate = generate;
 })(window);
