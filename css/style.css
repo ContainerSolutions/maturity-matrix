@@ -1,0 +1,88 @@
+ * {
+     margin: 0;
+     padding: 0;
+     text-align: center;
+     font-weight: 500;
+     box-sizing: border-box;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+     font-size: 15px;
+}
+ body {
+     overflow: hidden;
+     margin-left: 15px;
+     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+     font-size: 24px;
+     background: #FFFFFF;
+}
+ td {
+     min-width: 160px;
+     height: 55px;
+}
+ table {
+     width: 100vw;
+     position: relative;
+     top: -7px;
+     left: 8px;
+}
+ canvas {
+     width: 2252px;
+     height: 1446px;
+     z-index: 1;
+     position: absolute;
+     left: 10px;
+     top: 35px;
+}
+ .bold {
+     font-weight: 700;
+}
+ .row {
+     text-align: left;
+}
+ #current {
+     background: #2940f9;
+     color: white;
+     width: 185px;
+     text-align: center;
+     position: absolute;
+     top: 0;
+     left: 0;
+     font-size: 20px;
+}
+ #goal {
+     background: #ff17aa;
+     color: white;
+     position: absolute;
+     width: 60px;
+     text-align: center;
+     top: 0;
+     left: 0;
+     font-size: 20px;
+}
+ input{
+     margin-top:10px;
+     padding-bottom: 5px;
+     padding-top: 5px;
+     width:350px;
+     /* height:height:15px; */
+     font-size:18px;
+     background-color: transparent;
+     border: none;
+     font-weight: 700;
+     color: #2940f9;
+}
+.btn{
+    border: none;
+    background: #404040;
+    color: #ffffff !important;
+    font-weight: 100;
+    padding: 10px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+    font-size: 10px;
+}
