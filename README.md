@@ -1,7 +1,6 @@
-# Maturity Matrix interactive
+# The Interactive Cloud Native Maturity Matrix
 
-### How to use
-* On each row, drag from from point zero in the STAGE column and drop it anywhere within the same line
-* On top you can input the name of the project
-* To save it as an image, just click on the "Save as image" button at the bottom
-* Also, if you want to save it as a PDF, you can simply print the page.
+You can map your company’s current status here.  
+For each category, click on the circle at the far left and drag to the right, ending at the point that best describes your situation.  
+The gap between your end point and the Cloud Native column will show your distance from true Cloud Native status.  
+To learn more, check out our free whitepaper, [WTF Is the Cloud Native Maturity Matrix?](https://info.container-solutions.com/wtf-is-the-cloud-native-maturity-matrix)
