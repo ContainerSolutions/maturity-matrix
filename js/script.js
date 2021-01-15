@@ -1,8 +1,9 @@
 // CHECK IF THE MOUSE IS OVER A CLICKABLE DOT (BLACK DOTS ON THE LEFT)
+//click and drag area
 function pointInCircle() {
     for (var i = 0; i < lines.length; i++) {
-        var dx = mouse.x - lines[i].x1,
-            dy = mouse.y - lines[i].y1,
+        var dx = mouse.x - lines[i].x1 - 10,
+            dy = mouse.y - lines[i].y1 - 5,
             dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < radius) {
             canvas.style.cursor = 'pointer';
@@ -20,6 +21,7 @@ function pointInCircle() {
 var x = 0,
     y = 0;
 var marginLeft = 25;
+var smallRadius = 7;
 var radius = 10;
 var mouse = {
     "x": 0,
@@ -80,8 +82,7 @@ for (var i = 0; i < row.length; i++) {
 // ANIMATION LOOP
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = 'rgba(255,255,255,.15)';
+    ctx.fillStyle = 'rgba(255,23,170,.07)';
     ctx.fillRect(marginLeft + cellWidth, cellHeight, cellWidth * 3.5, cellHeight * 9);
     ctx.setLineDash([6, 4]);
     ctx.beginPath();
@@ -98,8 +99,8 @@ function draw() {
 
     //DRAW FINAL SHAPE (BLUE AREA)
 
-    ctx.fillStyle = 'rgba(0,0,255,.15)';
-    ctx.strokeStyle = "rgba(0,0,255,.25";
+    ctx.fillStyle = 'rgba(0,0,255,.19)';
+    ctx.strokeStyle = 'rgba(0,0,255,1)';
     ctx.beginPath();
     if (max.x > 0) {
         ctx.moveTo(marginLeft + cellWidth, cellHeight);
@@ -147,19 +148,21 @@ function draw() {
             }
             ctx.beginPath();
             ctx.setLineDash([0, 0]);
-            ctx.arc(x, y, radius, 0, 2 * Math.PI);
             ctx.lineWidth = 2;
             ctx.fillStyle = "white";
             ctx.fill();
             if (j !== col.length - 2) {
                 if (j == 0) {
-                    ctx.lineWidth = 1.5;
+                    ctx.lineWidth = 2;
+                    ctx.arc(x, y, radius, 0, 2 * Math.PI);
                 } else {
-                    ctx.lineWidth = 1;
+                    ctx.lineWidth = 1.5;
+                    ctx.arc(x, y, smallRadius, 0, 2 * Math.PI);
                 }
                 ctx.strokeStyle = "#000000";
             } else {
-                ctx.lineWidth = 1.5;
+                ctx.arc(x, y, smallRadius, 0, 2 * Math.PI);
+                ctx.lineWidth = 3;
                 ctx.strokeStyle = "#ff17aa";
             }
             ctx.stroke();

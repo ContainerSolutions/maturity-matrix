@@ -62,8 +62,8 @@
      top: 0;
      left: 0;
      font-size: 16px;
-     padding: 6px 10px;
-     border-radius: 4px;
+     padding: 4px 10px;
+
 }
  #goal {
      background: #ff17aa;
@@ -74,8 +74,7 @@
      top: 0;
      left: 0;
      font-size: 16px;
-     padding: 6px 10px;
-     border-radius: 4px;
+     padding: 4px 10px;
 }
  input{
      margin-top:10px;
