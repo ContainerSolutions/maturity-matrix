@@ -101,9 +101,22 @@
     display: inline-block;
     transition: all 0.3s ease 0s;
     font-size: 12px;
+    top: -50px;
+    position: relative;
 }
 .stage {
     color: grey;
     text-transform: uppercase;
     text-align: left;
 }
+.align-right{
+    text-align: left;
+}
+
+     .watermark{
+         opacity: 0.6;
+         max-width: 160px;
+         bottom: 10px;
+         left: 0px;
+         position: relative;
+     }
