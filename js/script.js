@@ -19,7 +19,7 @@ function pointInCircle() {
 // DRAW BASIC LAYOUT (CANVAS + DOTS + DELIMITERS)
 var x = 0,
     y = 0;
-var marginLeft = 15;
+var marginLeft = 25;
 var radius = 10;
 var mouse = {
     "x": 0,
@@ -55,9 +55,9 @@ canvas.width = table.offsetWidth + marginLeft;
 canvas.height = table.offsetHeight + marginLeft;
 canvas.style.width = table.offsetWidth + marginLeft + 'px';
 canvas.style.height = table.offsetHeight + marginLeft + 'px';
-current.style.left = cellWidth + marginLeft - current.offsetWidth / 2 + 'px';
+current.style.left = cellWidth + marginLeft - current.offsetWidth / 2.3 + 'px';
 current.style.top = cellHeight * 10 + radius + 40 + 'px';
-goal.style.left = cellWidth * 4.5 + marginLeft - goal.offsetWidth / 2 + 'px';
+goal.style.left = cellWidth * 4.5 + marginLeft - goal.offsetWidth / 3 + 'px';
 goal.style.top = cellHeight * 10 + radius + 40 + 'px';
 for (var i = 0; i < row.length; i++) {
     for (var j = 0; j < col.length; j++) {
@@ -153,13 +153,13 @@ function draw() {
             ctx.fill();
             if (j !== col.length - 2) {
                 if (j == 0) {
-                    ctx.lineWidth = 3;
+                    ctx.lineWidth = 1.5;
                 } else {
-                    ctx.lineWidth = 2;
+                    ctx.lineWidth = 1;
                 }
                 ctx.strokeStyle = "#000000";
             } else {
-                ctx.lineWidth = 3;
+                ctx.lineWidth = 1.5;
                 ctx.strokeStyle = "#ff17aa";
             }
             ctx.stroke();
@@ -299,7 +299,7 @@ window.addEventListener("resize", function() {
         html2canvas(wrapper, {
             onrendered: function(canvas) {
                 canvas.toBlob(function(blob) {
-                    saveAs(blob, (projectName ? projectName : 'myProject' )+ '.png')
+                    saveAs(blob, (projectName ? projectName : 'myProject' )+ '.jpeg')
                 });
             }
         });
@@ -316,7 +316,6 @@ window.addEventListener("resize", function() {
     function generate() {
         screenshotPage();
     }
-    console.log(exports, "exports");
     exports.screenshotPage = screenshotPage;
     exports.generate = generate;
 })(window);
