@@ -1,103 +1,114 @@
-<html>
-   <head>
-      <link href="css/style.css" rel="stylesheet" type="text/css">
-      <title>Maturity Matrix</title>
-   </head>
-   <body>
-      <div id="wrapper">
-      <input id="input" type="text" placeholder="Project name">
-      <table  id="table" cellspacing="0" cellpadding="0">
-         <tbody>
-            <tr>
-               <td  class="col">Stage</td>
-               <td class="col bold">NO PROCESS</td>
-               <td class="col bold">WATERFALL</td>
-               <td class="col bold">AGILE</td>
-               <td class="col bold">CLOUD NATIVE</td>
-               <td class="col bold">NEXT</td>
-            </tr>
-            <tr>
-               <td class="row bold">CULTURE</td>
-               <td>Individualist</td>
-               <td>Predictive</td>
-               <td>Iterative</td>
-               <td>Collaborative</td>
-               <td>Experimental</td>
-            </tr>
-            <tr>
-               <td class="row bold">PROD/SERVICE<br>DESIGN</td>
-               <td>Arbitrary</td>
-               <td>Long-term plan</td>
-               <td>Feature driven</td>
-               <td>Data driven</td>
-               <td>AI driven</td>
-            </tr>
-            <tr>
-               <td class="row bold">TEAM</td>
-               <td>No organisation,<br>single contributor</td>
-               <td>Hierarchy</td>
-               <td>Cross-functional<br>teams</td>
-               <td>DevOps / SRE</td>
-               <td>Internal supply<br>chains</td>
-            </tr>
-            <tr>
-               <td class="row bold">PROCESS</td>
-               <td>Random</td>
-               <td>Waterfall</td>
-               <td>Agile<br>(Scrum/Kanban)</td>
-               <td>Design Thinking +<br>Agile + Lean</td>
-               <td>Distributed,<br>self organised</td>
-            </tr>
-            <tr>
-               <td class="row bold">ARCHITECTURE</td>
-               <td>Emerging from<br>trial and error</td>
-               <td>Tightly coupled<br>monolith</td>
-               <td>Client server</td>
-               <td>Microservices</td>
-               <td>Functions</td>
-            </tr>
-            <tr>
-               <td class="row bold">MAINTENANCE</td>
-               <td>Respond to<br>users complaints</td>
-               <td>Ad-hoc<br>monitoring</td>
-               <td>Alerting</td>
-               <td>Full observability &amp;<br>self-healing</td>
-               <td>Preventive ML,<br>AI</td>
-            </tr>
-            <tr>
-               <td class="row bold">DELIVERY</td>
-               <td>Irregular releases</td>
-               <td>Periodic<br>releases</td>
-               <td>Continuous<br>Integration</td>
-               <td>Continuous<br>Delivery</td>
-               <td>Continuous<br>Deployment</td>
-            </tr>
-            <tr>
-               <td class="row bold">PROVISIONING</td>
-               <td>Manual</td>
-               <td>Scripted</td>
-               <td>Config management<br>(Puppet/Chef/Ansible)</td>
-               <td>Orchestration<br>(Kubernetes)</td>
-               <td>Serverless</td>
-            </tr>
-            <tr>
-               <td class="row bold">INFRASTRUCTURE</td>
-               <td>Single server</td>
-               <td>Multiple servers</td>
-               <td>VMs (pets)</td>
-               <td>Containers/<br>hybrid cloud (cattle)</td>
-               <td>Edge computing</td>
-            </tr>
-         </tbody>
-      </table>
-      <canvas id="canvas"></canvas>
-      <div id="current">Current situation</div>
-      <div id="goal">Goal</div>
-         <br><br>
-      </div>
-      <a class="btn" href="javascript:void(0);" onclick="generate(event);">Save as Image</a>
-     <script type="text/javascript" src="js/script.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-   </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maturity Matrix</title>
+    <link rel='shortcut icon' type='image/x-icon' href='assets/favicon.ico'/>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div id="wrapper">
+
+    <input id="input" type="text" placeholder="Click to add a project title">
+    <table id="table" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+            <td class="col bold stage">Stage</td>
+            <td class="col bold">NO PROCESS</td>
+            <td class="col bold">WATERFALL</td>
+            <td class="col bold">AGILE</td>
+            <td class="col bold">CLOUD NATIVE</td>
+            <td class="col bold">NEXT</td>
+        </tr>
+        <tr>
+            <td class="row bold">CULTURE</td>
+            <td>Individualist</td>
+            <td>Predictive</td>
+            <td>Iterative</td>
+            <td>Collaborative</td>
+            <td>Experimental</td>
+        </tr>
+        <tr>
+            <td class="row bold">PROD/SERVICE<br>DESIGN</td>
+            <td>Arbitrary</td>
+            <td>Long-term plan</td>
+            <td>Feature driven</td>
+            <td>Data driven</td>
+            <td>AI driven</td>
+        </tr>
+        <tr>
+            <td class="row bold">TEAM</td>
+            <td>No organisation,<br>single contributor</td>
+            <td>Hierarchy</td>
+            <td>Cross-functional<br>teams</td>
+            <td>DevOps / SRE</td>
+            <td>Internal supply<br>chains</td>
+        </tr>
+        <tr>
+            <td class="row bold">PROCESS</td>
+            <td>Random</td>
+            <td>Waterfall</td>
+            <td>Agile<br>(Scrum/Kanban)</td>
+            <td>Design Thinking +<br>Agile + Lean</td>
+            <td>Distributed,<br>self organised</td>
+        </tr>
+        <tr>
+            <td class="row bold">ARCHITECTURE</td>
+            <td>Emerging from<br>trial and error</td>
+            <td>Tightly coupled<br>monolith</td>
+            <td>Client server</td>
+            <td>Microservices</td>
+            <td>Functions</td>
+        </tr>
+        <tr>
+            <td class="row bold">MAINTENANCE</td>
+            <td>Respond to<br>users complaints</td>
+            <td>Ad-hoc<br>monitoring</td>
+            <td>Alerting</td>
+            <td>Full observability &amp;<br>self-healing</td>
+            <td>Preventive ML,<br>AI</td>
+        </tr>
+        <tr>
+            <td class="row bold">DELIVERY</td>
+            <td>Irregular releases</td>
+            <td>Periodic<br>releases</td>
+            <td>Continuous<br>Integration</td>
+            <td>Continuous<br>Delivery</td>
+            <td>Continuous<br>Deployment</td>
+        </tr>
+        <tr>
+            <td class="row bold">PROVISIONING</td>
+            <td>Manual</td>
+            <td>Scripted</td>
+            <td>Config management<br>(Puppet/Chef/Ansible)</td>
+            <td>Orchestration<br>(Kubernetes)</td>
+            <td>Serverless</td>
+        </tr>
+        <tr>
+            <td class="row bold">INFRASTRUCTURE</td>
+            <td>Single server</td>
+            <td>Multiple servers</td>
+            <td>VMs (pets)</td>
+            <td>Containers/<br>hybrid cloud (cattle)</td>
+            <td>Edge computing</td>
+        </tr>
+        </tbody>
+    </table>
+    <canvas id="canvas"></canvas>
+    <div id="current">Current situation</div>
+    <div id="goal">Goal</div>
+    <br><br>
+   <div class="align-right">
+      <a href="https://www.container-solutions.com/" target="_blank">
+         <img src="assets/watermark.png" class="watermark"/>
+      </a>
+
+   </div>
+</div>
+<a class="btn" href="javascript:void(0);" onclick="generate(event);">Save as Image File</a>
+<script type="text/javascript" src="js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+</body>
 </html>
