@@ -1,18 +1,16 @@
-// CHECK IF THE MOUSE IS OVER A CLICKABLE DOT (BLACK DOTS ON THE LEFT)
-//click and drag area
-function pointInCircle() {
+// CHECK IF THE MOUSE IS OVER A CLICKABLE LINE
+function clickOnLine() {
     for (var i = 0; i < lines.length; i++) {
-        var dx = mouse.x - lines[i].x1 - 10,
-            dy = mouse.y - lines[i].y1 - 5,
-            dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < radius) {
+        let paddingTop = mouse.y - 5
+        let paddingBottom = mouse.y + 20
+        if (lines[i].y1 < paddingBottom && lines[i].y1 > paddingTop && mouse.x > cellWidth && mouse.x <= table.offsetWidth) {
             canvas.style.cursor = 'pointer';
             selectedRow = i;
-            canDrag = true;
+            canClick = true;
             break;
         } else {
             canvas.style.cursor = 'default';
-            canDrag = false;
+            canClick = false;
         }
     }
 }
@@ -29,8 +27,7 @@ var mouse = {
 };
 var lines = [];
 var selectedRow = -1;
-var canDrag = false;
-var isDragging = false;
+var canClick = true;
 var cellWidth = document.getElementsByClassName('col')[0].offsetWidth;
 var cellHeight = document.getElementsByClassName('col')[0].offsetHeight;
 var max = {
@@ -172,53 +169,44 @@ function draw() {
             }
         }
     }
-    // DRAW A LINE ON MOUSE DRAG
-    if (isDragging) {
-        ctx.beginPath();
-        ctx.strokeStyle = "#0000FF";
-        ctx.moveTo(lines[selectedRow].x1, lines[selectedRow].y1 - 30);
-        ctx.lineTo(mouse.x, lines[selectedRow].y1 - 30);
-        ctx.stroke();
-    }
     requestAnimationFrame(draw);
 }
+
 requestAnimationFrame(draw);
 
 // EVENT LISTENERS
-canvas.addEventListener("mousemove", function(event) {
-    mouse.x = event.clientX;
-    mouse.y = event.clientY;
-    pointInCircle();
-});
-canvas.addEventListener("mousedown", function(event) {
-    if (canDrag) {
-        isDragging = true;
-    }
+canvas.addEventListener("mousemove", function (event) {
+    mouse.x = event.clientX - 10;
+    mouse.y = event.clientY - 10;
+    clickOnLine();
 });
 
-// SAVE MOUSE UP POSITION
-canvas.addEventListener("mouseup", function(event) {
-    if (isDragging) {
-        isDragging = false;
+
+// SAVE MOUSE click POSITION
+canvas.addEventListener("click", function (event) {
+    if (canClick === false) {
+        event.preventDefault();
+        event.stopPropagation()
+    } else {
         if (mouse.x > cellWidth + marginLeft) {
             if (mouse.x < cellWidth * 5.5 + marginLeft) {
                 lines[selectedRow].x2 = mouse.x;
-                if ((max.id==-1 || max.id >= selectedRow) && mouse.x <= cellWidth * 5.5) {
+                if ((max.id == -1 || max.id >= selectedRow) && mouse.x <= cellWidth * 5.5) {
                     max.x = mouse.x;
                     max.id = selectedRow
                 }
-                if ((max.id==-1 ||min.id <= selectedRow) && mouse.x <= cellWidth * 5.5) {
+                if ((max.id == -1 || min.id <= selectedRow) && mouse.x <= cellWidth * 5.5) {
                     min.x = mouse.x;
                     min.id = selectedRow;
                 }
 
             } else {
                 lines[selectedRow].x2 = cellWidth * 5.5 + marginLeft;
-                if ((max.id==-1 || max.id >= selectedRow)) {
+                if ((max.id == -1 || max.id >= selectedRow)) {
                     max.x = cellWidth * 5.5 + marginLeft;
                     max.id = selectedRow
                 }
-                if ((max.id==-1 || min.id <= selectedRow)) {
+                if ((max.id == -1 || min.id <= selectedRow)) {
                     min.x = cellWidth * 5.5 + marginLeft;
                     min.id = selectedRow
                 }
@@ -226,39 +214,9 @@ canvas.addEventListener("mouseup", function(event) {
         }
     }
 });
-canvas.addEventListener("mouseup", function(event) {
-    if (isDragging) {
-        isDragging = false;
-        if (mouse.x > cellWidth + marginLeft) {
-            if (mouse.x < cellWidth * 5.5 + marginLeft) {
-                lines[selectedRow].x2 = mouse.x;
-                if ((max.x == -1 || max.id <= selectedRow) && mouse.x<=cellWidth * 4.5) {
-                    max.x = mouse.x;
-                    max.id = selectedRow
-                }
-                if ((min.x == -1 || min.id >= selectedRow)&& mouse.x<=cellWidth * 4.5) {
-                    min.x = mouse.x;
-                    min.id = selectedRow
-                }
-				else{
-                    min.x = cellWidth * 4.5+ marginLeft;
-                    min.id = selectedRow				
-				}
-            } else {
-                lines[selectedRow].x2 = cellWidth * 5.5 + marginLeft;
-                if (max.x == -1 || max.id <= selectedRow) {
-                    max.x = cellWidth * 4.5 + marginLeft;
-                    max.id = selectedRow
-                }
-                if (min.x == -1 || min.id >= selectedRow) {
-                    min.x = cellWidth * 4.5 + marginLeft;
-                    min.id = selectedRow
-                }
-            }
-        }
-    }
-});
-window.addEventListener("resize", function() {
+
+
+window.addEventListener("resize", function () {
     cellWidth = document.getElementsByClassName('col')[0].offsetWidth;
     cellHeight = document.getElementsByClassName('col')[0].offsetHeight;
     canvas.width = table.offsetWidth + marginLeft;
@@ -272,7 +230,7 @@ window.addEventListener("resize", function() {
 });
 
 // SAVE IMAGE AS PNG
-(function(exports) {
+(function (exports) {
     function urlsToAbsolute(nodeList) {
         if (!nodeList.length) {
             return [];
@@ -281,7 +239,7 @@ window.addEventListener("resize", function() {
         if (nodeList[0].__proto__ === HTMLImageElement.prototype || nodeList[0].__proto__ === HTMLScriptElement.prototype) {
             attrName = 'src';
         }
-        nodeList = [].map.call(nodeList, function(el, i) {
+        nodeList = [].map.call(nodeList, function (el, i) {
             var attr = el.getAttribute(attrName);
             if (!attr) {
                 return;
@@ -300,16 +258,16 @@ window.addEventListener("resize", function() {
         var wrapper = document.getElementById('wrapper');
         let projectName = document.getElementById('input').value;
         html2canvas(wrapper, {
-            onrendered: function(canvas) {
-                canvas.toBlob(function(blob) {
-                    saveAs(blob, (projectName ? projectName : 'myProject' )+ '.jpeg')
+            onrendered: function (canvas) {
+                canvas.toBlob(function (blob) {
+                    saveAs(blob, (projectName ? projectName : 'myProject') + '.jpeg')
                 });
             }
         });
     }
 
     function addOnPageLoad_() {
-        window.addEventListener('DOMContentLoaded', function(e) {
+        window.addEventListener('DOMContentLoaded', function (e) {
             var scrollX = document.documentElement.dataset.scrollX || 0;
             var scrollY = document.documentElement.dataset.scrollY || 0;
             window.scrollTo(scrollX, scrollY);
@@ -319,6 +277,7 @@ window.addEventListener("resize", function() {
     function generate() {
         screenshotPage();
     }
+
     exports.screenshotPage = screenshotPage;
     exports.generate = generate;
 })(window);
