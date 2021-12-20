@@ -79,7 +79,7 @@ for (var i = 0; i < row.length; i++) {
 // ANIMATION LOOP
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'rgba(169,243,230,.4)';
+    ctx.fillStyle = 'rgba(169,243,230,.2)';
     ctx.fillRect(marginLeft + cellWidth, cellHeight, cellWidth * 3.5, cellHeight * 9);
     ctx.setLineDash([6, 4]);
     ctx.beginPath();
