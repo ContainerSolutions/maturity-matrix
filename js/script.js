@@ -96,7 +96,7 @@ function draw() {
 
     //DRAW FINAL SHAPE (BLUE AREA)
 
-    ctx.fillStyle = 'rgba(187,195,255,.49)';
+    ctx.fillStyle = 'rgba(187,195,255,.4)';
     ctx.strokeStyle = 'rgba(187,195,255,1)';
     ctx.beginPath();
     if (max.x > 0) {
