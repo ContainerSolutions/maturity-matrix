@@ -79,25 +79,25 @@ for (var i = 0; i < row.length; i++) {
 // ANIMATION LOOP
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'rgba(255,23,170,.07)';
+    ctx.fillStyle = 'rgba(169,243,230,.4)';
     ctx.fillRect(marginLeft + cellWidth, cellHeight, cellWidth * 3.5, cellHeight * 9);
     ctx.setLineDash([6, 4]);
     ctx.beginPath();
     ctx.moveTo(marginLeft + cellWidth, cellHeight);
     ctx.lineTo(marginLeft + cellWidth, cellHeight * 10);
-    ctx.strokeStyle = "#2940f9";
+    ctx.strokeStyle = "#BBC3FF";
     ctx.stroke();
 
     ctx.beginPath();
     ctx.moveTo(cellWidth * 4.5 + marginLeft, cellHeight);
     ctx.lineTo(cellWidth * 4.5 + marginLeft, cellHeight * 10);
-    ctx.strokeStyle = "#ff17aa";
+    ctx.strokeStyle = "#A9F3E6";
     ctx.stroke();
 
     //DRAW FINAL SHAPE (BLUE AREA)
 
-    ctx.fillStyle = 'rgba(0,0,255,.19)';
-    ctx.strokeStyle = 'rgba(0,0,255,1)';
+    ctx.fillStyle = 'rgba(187,195,255,.49)';
+    ctx.strokeStyle = 'rgba(187,195,255,1)';
     ctx.beginPath();
     if (max.x > 0) {
         ctx.moveTo(marginLeft + cellWidth, cellHeight);
@@ -160,7 +160,7 @@ function draw() {
             } else {
                 ctx.arc(x, y, smallRadius, 0, 2 * Math.PI);
                 ctx.lineWidth = 3;
-                ctx.strokeStyle = "#ff17aa";
+                ctx.strokeStyle = "#000000";
             }
             ctx.stroke();
             old = {
