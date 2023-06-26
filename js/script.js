@@ -84,13 +84,13 @@ function draw() {
     ctx.setLineDash([6, 4]);
     ctx.beginPath();
     ctx.moveTo(marginLeft + cellWidth, cellHeight);
-    ctx.lineTo(marginLeft + cellWidth, cellHeight * 10);
+    ctx.lineTo(marginLeft + cellWidth, cellHeight * (row.length+1));
     ctx.strokeStyle = "#BBC3FF";
     ctx.stroke();
 
     ctx.beginPath();
     ctx.moveTo(cellWidth * 4.5 + marginLeft, cellHeight);
-    ctx.lineTo(cellWidth * 4.5 + marginLeft, cellHeight * 10);
+    ctx.lineTo(cellWidth * 4.5 + marginLeft, cellHeight * (row.length+1));
     ctx.strokeStyle = "#A9F3E6";
     ctx.stroke();
 
