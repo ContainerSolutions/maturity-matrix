@@ -120,8 +120,8 @@ function draw() {
         }
     }
     if (max.x > 0) {
-        ctx.lineTo(min.x, cellHeight * 10);
-        ctx.lineTo(marginLeft + cellWidth, cellHeight * 10);
+        ctx.lineTo(min.x, cellHeight * (row.length+1));
+        ctx.lineTo(marginLeft + cellWidth, cellHeight * (row.length+1));
     }
     ctx.closePath();
     ctx.fill();
